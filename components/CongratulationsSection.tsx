@@ -1,6 +1,12 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import dynamic from 'next/dynamic'
+
+const CertificateGenerator = dynamic(() => import('./CertificateGenerator'), {
+  ssr: false,
+  loading: () => <div className="min-h-[600px] flex items-center justify-center"><p>読み込み中...</p></div>
+})
 
 export default function CongratulationsSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -106,6 +112,11 @@ export default function CongratulationsSection() {
           <p className="text-3xl md:text-4xl font-bold text-gold mt-8">
             あなただけです。
           </p>
+        </div>
+
+        {/* 認定証生成 */}
+        <div className="mt-16 w-full">
+          <CertificateGenerator />
         </div>
       </div>
     </section>
