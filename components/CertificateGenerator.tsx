@@ -107,9 +107,8 @@ export default function CertificateGenerator() {
   }
 
   const shareToLine = () => {
-    const text = `「アミダス人（ひと）: それはプラモデルからはじまった」\n\n読み終わった後に、もう一つの扉が開く🔓\n\n面白いから読んでみて？`
-    const url = 'https://fujisantype.com/book'
-    const shareUrl = `https://line.me/R/msg/text/?${encodeURIComponent(text + '\n' + url)}`
+    const text = `おすすめの電子書籍を見つけました！\nぜひ読んでみて下さい。\n\nhttps://amzn.asia/d/gdOwxkj`
+    const shareUrl = `https://line.me/R/msg/text/?${encodeURIComponent(text)}`
     window.open(shareUrl, '_blank')
   }
 
