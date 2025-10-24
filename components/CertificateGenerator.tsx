@@ -12,8 +12,8 @@ export default function CertificateGenerator() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    // 認定番号を取得
-    const lastNumber = localStorage.getItem('fujisantype_cert_number') || '41'
+    // 認定番号を取得（初期値を1に設定）
+    const lastNumber = localStorage.getItem('fujisantype_cert_number') || '0'
     const nextNumber = (parseInt(lastNumber) + 1).toString().padStart(5, '0')
     setCertNumber(nextNumber)
   }, [])
@@ -107,8 +107,8 @@ export default function CertificateGenerator() {
   }
 
   const shareToLine = () => {
-    const text = `「アミダス人（ひと）: それはプラモデルからはじまった」\n\n唯一無二を目指す人、高い頂を諦めない人、自分の足で登る人へ。`
-    const url = 'https://amzn.asia/d/gdOwxkj'
+    const text = `「アミダス人（ひと）: それはプラモデルからはじまった」\n\n読み終わった後に、もう一つの扉が開く🔓\n\n面白いから読んでみて？`
+    const url = 'https://fujisantype.com/book'
     const shareUrl = `https://line.me/R/msg/text/?${encodeURIComponent(text + '\n' + url)}`
     window.open(shareUrl, '_blank')
   }
@@ -182,24 +182,30 @@ export default function CertificateGenerator() {
 
           <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
             {/* 表紙画像 */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 w-full md:w-auto flex justify-center md:justify-start">
               <NextImage
                 src="/images/amidasu_book.png"
                 alt="アミダス人（ひと）: それはプラモデルからはじまった"
-                width={150}
-                height={240}
-                className="rounded shadow-lg"
+                width={375}
+                height={600}
+                className="rounded shadow-lg w-auto h-auto max-w-full"
               />
             </div>
 
             {/* 本の情報とボタン */}
             <div className="flex-1 text-center md:text-left">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
                 アミダス<ruby>人<rt style={{ fontSize: '0.5em' }}>ひと</rt></ruby>
               </h3>
-              <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
-                それはプラモデルからはじまった<br />
-                唯一無二を目指す人、高い頂を諦めない人、自分の足で登る人へ。
+              <p className="text-lg md:text-xl font-bold text-gray-700 mb-4">
+                それはプラモデルからはじまった
+              </p>
+              <p className="text-sm md:text-base text-gray-600 mb-4 leading-relaxed text-justify">
+                田舎のプラモデル少年が40歳で独立。<br />
+                貯金ゼロから這い上がった「編み出す力」の正体。
+              </p>
+              <p className="text-lg md:text-xl text-gray-600 mb-6 leading-relaxed text-justify">
+                読み終わった後に、もう一つの扉が開く🔓
               </p>
 
               <button
